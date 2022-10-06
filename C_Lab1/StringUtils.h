@@ -15,3 +15,5 @@ string str_c(string str1, string str2);
 
 /* replace every '%' to str2 in format string */
 string str_f(string format, string str2);
+
+//a
