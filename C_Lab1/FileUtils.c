@@ -54,6 +54,7 @@ void readAllLines_s(FILE* hFile, string** bucket, int* readed) {
             status = ERROR_BUFFER_OVERFLOW;
             break;
         }
+        if (s == -1) break;
         expandBucket(bucket, i + 1);
         (*bucket)[i] = str_copy(buffer);
         i++; 
