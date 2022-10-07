@@ -26,8 +26,9 @@ int getStringLength(string str)
 int parseInteger32(string str, __int32 *out)
 {
 	int i = 0;
-	long long result = 0;
-	int tmp;
+	__int64 result = 0;
+	__int64 tmp;
+        __int64 k = 1;
 	int sign = 1;
 	if (str[0] == '-') {
 		sign = -1;
@@ -35,11 +36,12 @@ int parseInteger32(string str, __int32 *out)
 	}
 	long long intMax = INT_MAX + ((long long)max(0, -1 * sign));
 	while (str[i] != '\0') {
-		if (str[i] >= '0' || str[i] <= '9') {
-			tmp = (str[i] - '0') * (i * 10);
+		if (str[i] >= '0' && str[i] <= '9') {
+			tmp = (str[i] - '0') * k;
+                        k = k * 10;
 		}
-		else return 0;
-		if (result + tmp > intMax) return -1;
+		else return (i+1)
+		if ((__int64)(result + tmp) > intMax) return -1;
 		result += tmp;
 		i++;
 	}
