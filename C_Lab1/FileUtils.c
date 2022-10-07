@@ -55,7 +55,7 @@ void readAllLines_s(FILE* hFile, string** bucket, int* readed) {
             break;
         }
         expandBucket(bucket, i + 1);
-        (*bucket)[i] = buffer;
+        (*bucket)[i] = str_copy(buffer);
         i++; 
     }
     *readed = i;
