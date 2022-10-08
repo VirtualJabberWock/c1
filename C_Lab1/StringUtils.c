@@ -26,27 +26,31 @@ int getStringLength(string str)
 int parseInteger32(string str, __int32 *out)
 {
 	int i = 0;
+	int l = 0;
 	__int64 result = 0;
 	__int64 tmp;
-        __int64 k = 1;
+	__int64 k = 1;
 	int sign = 1;
 	if (str[0] == '-') {
 		sign = -1;
-		i = 1;
+		l = 1;
 	}
 	long long intMax = INT_MAX + ((long long)max(0, -1 * sign));
-	while (str[i] != '\0') {
-		if (str[i] >= '0' && str[i] <= '9') {
-			tmp = (str[i] - '0') * k;
-                        k = k * 10;
+	while (str[i] != '\0') i++;
+	for (int j = i - 1; j >= l; j--) {
+		if (str[j] >= '0' && str[j] <= '9') {
+			tmp = ((__int64)str[j] - '0') * k;
+			k = k * 10;
 		}
-		else return (i+1)
-		if ((__int64)(result + tmp) > intMax) return -1;
+		else return (j + 1);
+		if ((__int64)(result + tmp) > intMax) {
+			__int64 s = result + tmp;
+			return -1;
+		}
 		result += tmp;
-		i++;
 	}
 	*out = (__int32) (result * sign);
-	return 1;
+	return 0;
 }
 
 string str_c(string str1, string str2) {
@@ -127,7 +131,7 @@ string* split(string str, char delimiter, int* count) {
 	}
 	tmp = initCharList(end - start + 1);
 	subCharList(str, tmp, start, end);
-	pushToBucket(&a, &bucket_s, tmp);
+	pushToBucket(&a, &bucket_s, buildString(tmp, end-start));
 	*count = bucket_s; // [out]
 	return a;
 }

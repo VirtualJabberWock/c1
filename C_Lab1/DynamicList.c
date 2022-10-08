@@ -75,7 +75,7 @@ obj_ptr* initBucket(int size) {
 void expandBucket(obj_ptr** bucket, int new_size) {
 	void* address = (*bucket);
 	if (address == NULL) panic("List::Memory allocation error!");
-	char* tmp = (char*)realloc((void*)(*bucket), new_size);
+	char* tmp = (char*)realloc((void*)(bucket[0]), sizeof(void*)*new_size);
 	if (tmp == NULL) panic("CharList::Memory allocation error!");
 	else {
 		bucket[0] = tmp;

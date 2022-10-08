@@ -32,12 +32,13 @@ int64_t getFileSizeWin(const char* file_name) {
 	return _file_size;
 }
 
-int64_t getFileSize(const wchar_t* file_name) {
+int64_t getFileSize(const char* file_name) {
 	if (isWindows(__os__())) return getFileSizeWin(file_name);
 	if (isLinux(__os__())) {
-		panic("[Linux OS] Haha, not ready for linux actually, but in theory...");
-		return 0;
+		printf("\n[Warning!] Haha, not ready for Linux OS actually, but in theory...\n");
+		return -1;
 	}
+	return -2;
 }
 
 //

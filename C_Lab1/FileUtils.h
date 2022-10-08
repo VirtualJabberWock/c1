@@ -30,6 +30,7 @@ void readAllNumbers_s(FILE* hFile, int** array, int* readed, string format);
 
 
 void readAllLines_s(FILE* hFile, string** bucket, int* readed);
+void writeAllLines_s(FILE* hFile, string* lines, int len);
 
 int writeAllNumbers(FILE* hFile, int* array, int len, string format);
 void writeAllNumbers_s(FILE* hFile, int* array, int len, string format);

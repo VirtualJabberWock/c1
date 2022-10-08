@@ -63,6 +63,25 @@ void readAllLines_s(FILE* hFile, string** bucket, int* readed) {
     handleIOError(status, "Input file: ");
 }
 
+void writeAllLines_s(FILE* hFile, string* lines, int len)
+{
+    int status = STATUS_SUCCESS;
+    int tmp;
+    for (int i = 0; i < len; i++) {
+        tmp = fprintf_s(hFile, "%s", lines[i]);
+        if (tmp == 0) 
+        {
+             status = ERROR_CANT_WRITE;
+             break;
+        }
+        if (tmp < 0) {
+            status = tmp;
+            break;
+        }
+    }
+    handleIOError(status, "File writer: ");
+}
+
 int writeAllNumbers(FILE* hFile, int* array, int len, string format) {
     int tmp;
     for (int i = 0; i < len; i++) {

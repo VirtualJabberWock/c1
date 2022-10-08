@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CurrentLab.c" />
     <ClCompile Include="DebugUtils.c" />
     <ClCompile Include="DynamicList.c" />
     <ClCompile Include="FileUtils.c" />
@@ -150,6 +151,7 @@
     <ClCompile Include="StringUtils.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CurrentLab.h" />
     <ClInclude Include="DebugUtils.h" />
     <ClInclude Include="DynamicList.h" />
     <ClInclude Include="FileUtils.h" />

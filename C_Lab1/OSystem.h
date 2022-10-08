@@ -18,7 +18,7 @@
 #endif
 
 const char* __os__();
-int64_t getFileSize(const wchar_t* file_name);
+int64_t getFileSize(const char* file_name);
 
 
 

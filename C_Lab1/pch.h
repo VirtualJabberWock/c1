@@ -4,4 +4,5 @@
 #include "FileUtils.h"
 #include "StringUtils.h"
 #include "OSystem.h"
+#include "CurrentLab.h"
 #include "test.h"
