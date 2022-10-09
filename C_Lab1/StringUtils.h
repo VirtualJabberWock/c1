@@ -5,6 +5,7 @@
 string clearDublicateSpaces(string str);
 int getStringLength(string str);
 int parseInteger32(string str, __int32* out);
+int isStringNumber(string str);
 
 string trim(string str);
 string* split(string, char delimiter, int* parts_count);

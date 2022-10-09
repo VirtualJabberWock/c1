@@ -23,9 +23,18 @@ int getStringLength(string str)
 	return i;
 }
 
+int isStringNumber(string str) {
+	int i = 0;
+	if (str[0] == '-') i++;
+	while (str[i] != '\0') {
+		if (str[i] < '0' || str[i] > '9') return (i + 1);
+		i++;
+	}
+	return 0;
+}
+
 int parseInteger32(string str, __int32 *out)
 {
-	int i = 0;
 	int l = 0;
 	__int64 result = 0;
 	__int64 tmp;
@@ -35,14 +44,14 @@ int parseInteger32(string str, __int32 *out)
 		sign = -1;
 		l = 1;
 	}
+	int len = getStringLength(str);
+	int isNum = isStringNumber(str);
+	if (isNum != 0) return isNum;
+	if (len > 19) return -2;
 	long long intMax = INT_MAX + ((long long)max(0, -1 * sign));
-	while (str[i] != '\0') i++;
-	for (int j = i - 1; j >= l; j--) {
-		if (str[j] >= '0' && str[j] <= '9') {
-			tmp = ((__int64)str[j] - '0') * k;
-			k = k * 10;
-		}
-		else return (j + 1);
+	for (int i = len - 1; i >= l; i--) {
+		tmp = ((__int64)str[i] - '0') * k;
+		k = k * 10;
 		if ((__int64)(result + tmp) > intMax) {
 			__int64 s = result + tmp;
 			return -1;

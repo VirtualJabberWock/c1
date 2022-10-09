@@ -12,7 +12,8 @@ static string debug_channel2;
 
 void panic(string msg) {
 	printf_s(msg);
-	printf_s("\n\nTerminating process...\n");
+	printf_s("\n");
+	system("pause");
 	if (isWindows(__os__())) ExitProcess(1);
 	else exit(1);
 }

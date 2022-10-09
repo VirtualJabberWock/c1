@@ -29,7 +29,7 @@ string inverseBinary(string masked_bin)
     CharList cList = initCharList(1);
     while (masked_bin[i] != '\0') {
         char tmp = (char)('0' + (masked_bin[i] ^ '1'));
-        pushToCharList(&cList, &i, masked_bin[i]);
+        pushToCharList(&cList, &i, tmp);
     }
     return buildString(cList, i);
 }

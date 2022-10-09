@@ -121,8 +121,7 @@ void handleIOError(int status, string msg) {
     if (status != 0) {
         printf_s("Unexpected error %d", status);
     }
-    printf_s("\nTerminating process...\n\n");
-    exit(1);
+    panic("\n...");
 }
 
 void _handleIOError(int status) {
