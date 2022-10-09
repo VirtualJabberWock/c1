@@ -24,7 +24,7 @@ void handleWinIOError(string fn1, string fn2);
 
 static const MAX_FILE_SIZE = 1024 * 1024 * 256;
 
-int main(int argc, string* argv) {
+int main(int argc, const char** argv) {
 	//BeforeLoad();
 
 	string input_fn;
@@ -54,7 +54,7 @@ int main(int argc, string* argv) {
 		input_fn = str_copy(args[0]);
 		output_fn = str_copy(args[1]);
 	
-		freeBucket(args, args_c); // free user input
+		freeBucket(args, args_c); // free user input 
 	}
 
 	handleWinIOError(input_fn, output_fn);

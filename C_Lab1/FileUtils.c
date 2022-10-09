@@ -100,7 +100,9 @@ void writeAllNumbers_s(FILE* hFile, int* array, int len, string format) {
 }
 
 void handleIOError(int status, string msg) {
-    if (status == STATUS_SUCCESS) return;
+    if (status == STATUS_SUCCESS) {
+        return;
+    }
     printf_s(msg);
     if (status == ERROR_CANT_READ) {
         printf_s("Can't READ data from file");
@@ -111,7 +113,7 @@ void handleIOError(int status, string msg) {
         status = 0;
     }
     if (status == ERROR_BUFFER_OVERFLOW) {
-        printf_s("Buffer overflow, max decimal number is 10^1024 (also very big number)");
+        printf_s("Buffer overflow, number or single text line in input file too big (> 2048 chars).");
         status = 0;
     }
     if (status == 2) {
@@ -119,7 +121,7 @@ void handleIOError(int status, string msg) {
         status = 0;
     }
     if (status != 0) {
-        printf_s("Unexpected error %d", status);
+        perror("IO Error");
     }
     panic("\n...");
 }
